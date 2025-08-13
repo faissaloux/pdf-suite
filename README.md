@@ -9,7 +9,7 @@ pip install -r requirements.txt
 ### Usage
 
 #### In order
-To merge your files in a specific order, specify your files in the order you want in `ORDER` array in `main.py` file.
+To merge your files in a specific order, specify your files in the order you want in `ORDER` array in `merger.py` file.
 
 ```python
 ORDER = [
@@ -21,7 +21,7 @@ ORDER = [
 
 #### Run
 ```bash
-python main.py
+python main.py -i input -o output
 ```
 
 #### Output

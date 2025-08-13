@@ -1,27 +1,15 @@
-import glob
-import os
+import typer
 
 from merger import Merger
 
-INPUT_DIRECTORY = 'input'
-OUTPUT_DIRECTORY = 'output'
+app = typer.Typer()
 
-ORDER = [
-    # pdf files in order.
-]
+@app.command()
+def merge(
+    input: str = typer.Option('input', "--input", "-i", help="Where all your files to merge reside."),
+    output: str = typer.Option('output', "--output", "-o", help="Where you gonna find the generated pdf.")
+):
+    Merger().merge(input, output)
 
-pdf_files = []
-
-if (len(ORDER) == 0):
-    pdf_files = glob.glob(f"{INPUT_DIRECTORY}/*.pdf")
-else:
-    for file in ORDER:
-        if not file.endswith('.pdf'):
-            file = file + '.pdf'
-
-        path = os.path.join(INPUT_DIRECTORY, file)
-
-        if os.path.exists(os.path.exists(f"{INPUT_DIRECTORY}/{file}")):
-            pdf_files.append(path)
-
-Merger.merge(pdf_files, OUTPUT_DIRECTORY)
+if __name__ == "__main__":
+    app()
