@@ -28,5 +28,6 @@ class CommandLine:
     def compress(
         input: str = typer.Option('input', '--input', '-i', help='PDF file that you want to compress.'),
         output: str = typer.Option('output', '--output', '-o', help='Path where you will find the compressed PDF file.'),
+        max: str = typer.Option(None, '--max', '-m', help='Maximum size (MB) you tolerate for the compressed file.'),
     ):
-        Compress().run(input, output)
+        Compress().run(input, output, max)
