@@ -4,11 +4,12 @@ import PyPDF2
 from termspark import print
 
 class Merger:
-    ORDER = [
-        # pdf files in order.
-    ]
+    order = []
 
-    def merge(self, input_directory, output_directory):
+    def merge(self, input_directory, output_directory, order):
+        if order:
+            self.order = order.split(',')
+
         pdf_files = self.__get_pdf_files(input_directory)
 
         if (len(pdf_files) == 0):
@@ -38,10 +39,10 @@ class Merger:
     def __get_pdf_files(self, input_directory):
         pdf_files = []
 
-        if (len(self.ORDER) == 0):
+        if (len(self.order) == 0):
             pdf_files = glob.glob(f"{input_directory}/*.pdf")
         else:
-            for file in self.ORDER:
+            for file in self.order:
                 if not file.endswith('.pdf'):
                     file = file + '.pdf'
 
