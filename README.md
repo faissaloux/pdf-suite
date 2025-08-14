@@ -44,5 +44,14 @@ Compress a PDF file.
 pdf_suite compress --input input.pdf --output output.pdf
 ```
 
+#### Compress to a maximum size
+You can specify the maximum size (MB) you need.
+
+```bash
+pdf_suite compress --input input.pdf --output output.pdf --max 2
+```
+
+`input.pdf` will be compressed to `output.pdf` with less than 2MB.
+
 #### Output
 A compressed PDF file `output.pdf` will be generated for you.
