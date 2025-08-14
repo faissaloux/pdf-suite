@@ -1,4 +1,9 @@
-## [Unreleased](https://github.com/faissaloux/pdf-suite/compare/v0.1.0...main)
+## [Unreleased](https://github.com/faissaloux/pdf-suite/compare/v0.2.0...main)
+
+## [v0.2.0](https://github.com/faissaloux/pdf-suite/compare/v0.1.0...v0.2.0) - 2024-08-14
+### ADDED
+- Compress pdf by [@faissaloux](https://github.com/faissaloux) in https://github.com/faissaloux/pdf-suite/pull/3
+- Merge order by [@faissaloux](https://github.com/faissaloux) in https://github.com/faissaloux/pdf-suite/pull/2
 
 ## v0.1.0 - 2025-08-14
 ### ADDED
