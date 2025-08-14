@@ -1,4 +1,5 @@
-import os
+from pdf_suite.helper.percentage import Percentage
+from .helper.filesize import FileSize
 from pypdf import PdfWriter
 from termspark import TermSpark
 
@@ -13,13 +14,10 @@ class Compress:
         with open(output, "wb") as f:
             writer.write(f)
 
-        inputSize = os.path.getsize(input) / (1024 * 1024)
-        outputSize = os.path.getsize(output) / (1024 * 1024)
-        percentage = ((inputSize - outputSize) * 100) / inputSize
-        inputSizeText = str('%.2f' % inputSize) + " MB"
-        outputSizeText = str('%.2f' % outputSize) + " MB"
-        percentageText = str('%.2f' % percentage) + "  %"
+        inputSize, inputSizeForHuman = FileSize(input).to_megabytes()
+        outputSize, outputSizeForHuman = FileSize(output).to_megabytes()
+        percentage = Percentage().part(inputSize - outputSize).whole(inputSize).humanize()
 
-        TermSpark().set_width(40).print_left("From").print_right(inputSizeText, "bright red").spark()
-        TermSpark().set_width(40).print_left("To").print_right(outputSizeText, "pixie green").spark()
-        TermSpark().set_width(40).print_left("Compressed by").print_right(percentageText, "pixie green").spark()
+        TermSpark().set_width(40).print_left("From").print_right(inputSizeForHuman, "bright red").spark()
+        TermSpark().set_width(40).print_left("To").print_right(outputSizeForHuman, "pixie green").spark()
+        TermSpark().set_width(40).print_left("Compressed by").print_right(percentage, "pixie green").spark()
