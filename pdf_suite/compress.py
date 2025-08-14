@@ -33,6 +33,6 @@ class Compress:
         TermSpark().set_width(40).print_left("Output size").print_right(outputSizeForHuman, "pixie green").spark()
         TermSpark().set_width(40).print_left("Compressed by").print_right(percentage, "pixie green").spark()
 
-        if outputSize > float(max):
+        if max and outputSize > float(max):
             print()
             TermSpark().print_left(f" Could not compress to less than {max} MB! ", 'white', 'bright red').spark()
