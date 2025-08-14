@@ -1,4 +1,8 @@
-/__pycache__
+/build
+/dist
+/.vscode
 /venv
+*.egg-info
+__pycache__
 /input
 /output

@@ -1,6 +1,6 @@
 ## Install
 ```bash
-pip install -r requirements.txt
+pip install pdf-suite
 ```
 
 ## Features
@@ -25,7 +25,7 @@ ORDER = [
 
 #### Run
 ```bash
-python main.py merge -i input -o output
+pdf_suite merge -i input -o output
 ```
 
 #### Output
@@ -36,7 +36,7 @@ Extract images from your PDF file.
 
 #### Run
 ```bash
-python main.py pdf2img --input file.pdf --output images_directory
+pdf_suite pdf2img --input file.pdf --output images_directory
 ```
 
 #### Output
