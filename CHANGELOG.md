@@ -1,4 +1,11 @@
-## [Unreleased](https://github.com/faissaloux/pdf-suite/compare/v0.2.0...main)
+## [Unreleased](https://github.com/faissaloux/pdf-suite/compare/v0.3.0...main)
+
+## [v0.3.0](https://github.com/faissaloux/pdf-suite/compare/v0.2.0...v0.3.0) - 2024-09-03
+### ADDED
+- Merge image with pdf by [@faissaloux](https://github.com/faissaloux) in https://github.com/faissaloux/pdf-suite/pull/4
+
+### CHORE
+- Typing by [@faissaloux](https://github.com/faissaloux) in https://github.com/faissaloux/pdf-suite/pull/5
 
 ## [v0.2.0](https://github.com/faissaloux/pdf-suite/compare/v0.1.0...v0.2.0) - 2024-08-14
 ### ADDED
