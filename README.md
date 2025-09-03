@@ -4,14 +4,14 @@ pip install pdf-suite
 ```
 
 ## Features
-- Merge pdf files in one.
+- Merges multiple PDF files / images into one PDF file.
 - PDF to Images.
 - Compress PDF.
 
 ## Usage
 
 ### Merge
-Merges multiple PDF files into one.
+Merges multiple PDF files / images into one PDF file.
 
 ```bash
 pdf_suite merge -i input -o output
@@ -21,7 +21,7 @@ pdf_suite merge -i input -o output
 To merge your files in a specific order, you need to pass the order you want to `--order` option.
 
 ```bash
-pdf_suite merge --input input --output output --order file1,file2,file3
+pdf_suite merge --input input --output output --order file1.pdf,file2,file3.jpg
 ```
 
 #### Output

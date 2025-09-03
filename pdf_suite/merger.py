@@ -1,6 +1,9 @@
 import glob
 import os
+import shutil
 import PyPDF2
+import img2pdf
+from pdf_suite.helper.file import File
 from termspark import print
 
 class Merger:
@@ -10,17 +13,18 @@ class Merger:
         if order:
             self.order = order.split(',')
 
-        pdf_files = self.__get_pdf_files(input_directory)
+        files = self.__get_files(input_directory)
+        files = self.__convert_images_to_pdfs(files)
 
-        if (len(pdf_files) == 0):
-            print(' No PDF files to merge! ', 'white', 'guardsman red')
+        if (len(files) == 0):
+            print(' No files to merge! ', 'white', 'guardsman red')
 
             return False
 
         pdfWriter = PyPDF2.PdfWriter()
 
-        for filename in pdf_files:
-            with open(filename, 'rb') as pdfFileObj:
+        for file in files:
+            with open(file.path, 'rb') as pdfFileObj:
                 pdfReader = PyPDF2.PdfReader(pdfFileObj)
                 for pageNum in range(0, len(pdfReader.pages)):
                     pageObj = pdfReader.pages[pageNum]
@@ -32,23 +36,45 @@ class Merger:
         with open(f"{output_directory}/output.pdf", 'wb') as pdfOutput:
             pdfWriter.write(pdfOutput)
 
-        print(' PDF files merged successfully! ', 'black', 'screaming green')
+        print(' files merged successfully! ', 'black', 'screaming green')
 
         return True
 
-    def __get_pdf_files(self, input_directory):
-        pdf_files = []
+    def __get_files(self, input_directory):
+        extensions = ('pdf', 'jpg', 'jpeg', 'png')
+        files = []
 
         if (len(self.order) == 0):
-            pdf_files = glob.glob(f"{input_directory}/*.pdf")
+            for extension in extensions:
+                files.extend(File(glob.glob(f"{input_directory}/*.{extension}")))
         else:
-            for file in self.order:
-                if not file.endswith('.pdf'):
-                    file = file + '.pdf'
+            for path in self.order:
+                file = File(os.path.join(input_directory, f"{path}"))
 
-                path = os.path.join(input_directory, file)
+                for extension in extensions:
+                    if not file.extension:
+                        file.set_extension(extension)
 
-                if os.path.exists(os.path.exists(f"{input_directory}/{file}")):
-                    pdf_files.append(path)
+                    if file.exists():
+                        files.append(file)
+                        break
 
-        return pdf_files
+        return files
+
+    def __convert_images_to_pdfs(self, files):
+        if not os.path.isdir('.temp'):
+            os.makedirs('.temp')
+
+        for index, file in enumerate(files):
+            if file.is_image():
+                pdf_file_path = os.path.join('.temp', f"{file.name}-{index}.pdf")
+                with open(pdf_file_path, 'wb') as pdf_file:
+                    pdf_file.write(img2pdf.convert(file.path))
+
+                    files[index] = File(pdf_file_path)
+
+        return files
+
+    def __del__(self):
+        if os.path.isdir('.temp'):
+            shutil.rmtree('.temp')
