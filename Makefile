@@ -15,7 +15,5 @@ install: clean
 build: clean
 	$(PYTHON) setup.py bdist_wheel
 
-lint: mypy
-
-mypy:
+lint:
 	mypy --show-error-codes $(NAME)
