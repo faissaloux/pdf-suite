@@ -2,7 +2,7 @@ import fitz
 import os
 
 class pdfToImage:
-    def run(self, pdf_path, output_folder):
+    def run(self, pdf_path: str, output_folder: str):
         """
         Extracts all images from a PDF and saves them to a specified folder.
         """

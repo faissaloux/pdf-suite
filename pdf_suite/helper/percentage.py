@@ -9,7 +9,7 @@ class Percentage:
 
         return self
 
-    def humanize(self):
-        percentage = (self._part * 100) / self._whole
+    def humanize(self) -> str:
+        perc = (self._part * 100) / self._whole
 
-        return str('%.2f' % percentage) + '  %'
+        return str('%.2f' % perc) + '  %'

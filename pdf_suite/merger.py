@@ -7,13 +7,13 @@ from pdf_suite.helper.file import File
 from termspark import print
 
 class Merger:
-    order = []
+    order: list[str] = []
 
-    def merge(self, input_directory, output_directory, order):
+    def merge(self, input_directory: str, output_directory: str, order: str) -> bool:
         if order:
             self.order = order.split(',')
 
-        files = self.__get_files(input_directory)
+        files: list[File] = self.__get_files(input_directory)
         files = self.__convert_images_to_pdfs(files)
 
         if (len(files) == 0):
@@ -40,16 +40,17 @@ class Merger:
 
         return True
 
-    def __get_files(self, input_directory):
-        extensions = ('pdf', 'jpg', 'jpeg', 'png')
-        files = []
+    def __get_files(self, input_directory: str) -> list[File]:
+        extensions: tuple[str, ...] = ('pdf', 'jpg', 'jpeg', 'png')
+        files: list[File] = []
 
         if (len(self.order) == 0):
             for extension in extensions:
-                files.extend(File(glob.glob(f"{input_directory}/*.{extension}")))
+                for file_path in glob.glob(f"{input_directory}/*.{extension}"):
+                    files.append(File(file_path))
         else:
             for path in self.order:
-                file = File(os.path.join(input_directory, f"{path}"))
+                file: File = File(os.path.join(input_directory, f"{path}"))
 
                 for extension in extensions:
                     if not file.extension:
@@ -61,7 +62,7 @@ class Merger:
 
         return files
 
-    def __convert_images_to_pdfs(self, files):
+    def __convert_images_to_pdfs(self, files: list[File]) -> list[File]:
         if not os.path.isdir('.temp'):
             os.makedirs('.temp')
 
