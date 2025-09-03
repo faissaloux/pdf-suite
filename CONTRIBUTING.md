@@ -39,3 +39,8 @@ make install
 ```
 ## Documentation
 Make sure to document your changes.
+
+## Lint
+```bash
+make lint
+```
