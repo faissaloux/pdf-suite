@@ -45,17 +45,18 @@ class Merger:
         files = []
 
         if (len(self.order) == 0):
-            for ext in extensions:
-                files.extend(File(glob.glob(f"{input_directory}/*.{ext}")))
+            for extension in extensions:
+                files.extend(File(glob.glob(f"{input_directory}/*.{extension}")))
         else:
-            for file in self.order:
-                for ext in extensions:
-                    path = os.path.join(input_directory, f"{file}")
-                    if not '.' in file:
-                        path += f".{ext}"
+            for path in self.order:
+                file = File(os.path.join(input_directory, f"{path}"))
 
-                    if os.path.exists(path):
-                        files.append(File(path))
+                for extension in extensions:
+                    if not file.extension:
+                        file.set_extension(extension)
+
+                    if file.exists():
+                        files.append(file)
                         break
 
         return files
