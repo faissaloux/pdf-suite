@@ -35,7 +35,12 @@ Please review these guidelines before submitting any pull requests.
 
 - Install the dev dependencies:
 ```bash
-pip install -e .[dev]
+make install
 ```
 ## Documentation
 Make sure to document your changes.
+
+## Lint
+```bash
+make lint
+```
