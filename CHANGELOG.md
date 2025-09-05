@@ -1,4 +1,8 @@
-## [Unreleased](https://github.com/faissaloux/pdf-suite/compare/v0.3.0...main)
+## [Unreleased](https://github.com/faissaloux/pdf-suite/compare/v0.3.1...main)
+
+## [v0.3.1](https://github.com/faissaloux/pdf-suite/compare/v0.3.0...v0.3.1) - 2024-09-05
+### FIXED
+- Fix mypy version by [@faissaloux](https://github.com/faissaloux) in https://github.com/faissaloux/pdf-suite/pull/6
 
 ## [v0.3.0](https://github.com/faissaloux/pdf-suite/compare/v0.2.0...v0.3.0) - 2024-09-03
 ### ADDED
