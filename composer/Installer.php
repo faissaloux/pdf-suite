@@ -28,8 +28,8 @@ class Installer implements PluginInterface
         $os = PHP_OS_FAMILY;
 
         $binaries = [
-            'Windows' => 'pdf_suite-linux',
-            'Linux' => 'pdf_suite-win',
+            'Windows' => 'pdf_suite-win',
+            'Linux' => 'pdf_suite-linux',
             'Darwin' => 'pdf_suite-mac',
         ];
 
