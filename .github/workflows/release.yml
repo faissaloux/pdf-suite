@@ -1,7 +1,6 @@
 name: Build and Release
 
 on:
-  pull_request:
   release:
     types: [published]
 
@@ -17,10 +16,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Run a script
-        run: |
-          echo "Current branch is ${{ github.ref_name }}"
-
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
@@ -35,11 +30,16 @@ jobs:
         run: |
           pyinstaller --onefile pdf_suite/cli.py -n pdf_suite
 
+      - name: Flatten binary for upload
+        run: |
+          mkdir -p temp_upload
+          mv dist/pdf_suite temp_upload/pdf_suite-${{ env.os_name }}
+
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: pdf_suite-${{ env.os_name }}
-          path: dist/pdf_suite*
+          path: temp_upload/pdf_suite-${{ env.os_name }}
 
   release:
     runs-on: ubuntu-latest
@@ -52,9 +52,6 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           path: ./binaries
-
-      - name: List files
-        run: ls -la ./binaries
 
       - name: Install GitHub CLI
         run: sudo apt update && sudo apt install -y gh
