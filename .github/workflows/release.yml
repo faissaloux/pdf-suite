@@ -63,6 +63,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.UPLOAD_BINARIES }}
         run: |
-          for file in ./binaries/*; do
+          for file in ./binaries/**/*; do
             ls -la "$file"
           done
