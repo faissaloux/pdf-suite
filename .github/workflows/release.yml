@@ -33,14 +33,13 @@ jobs:
 
       - name: Flatten binary for upload
         run: |
-          mkdir -p temp_upload
-          mv dist/pdf_suite temp_upload/pdf_suite-${{ env.os_name }}
+          mv dist/pdf_suite pdf_suite-${{ env.os_name }}
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: pdf_suite-${{ env.os_name }}
-          path: temp_upload/pdf_suite-${{ env.os_name }}
+          name: pdf_suite-binaries
+          path: pdf_suite-${{ env.os_name }}
 
   release:
     runs-on: ubuntu-latest
@@ -52,6 +51,7 @@ jobs:
       - name: Download all artifacts
         uses: actions/download-artifact@v4
         with:
+          name: pdf_suite-binaries
           path: ./binaries
 
       - name: Install GitHub CLI
