@@ -49,5 +49,6 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           files: binaries/**/*
+          tag_name: ${{ github.ref_name }}
         env:
           GITHUB_TOKEN: ${{ secrets.UPLOAD_BINARIES }}
