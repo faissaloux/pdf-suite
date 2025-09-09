@@ -64,5 +64,5 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.UPLOAD_BINARIES }}
         run: |
           for file in ./binaries/*; do
-            gh release upload v0.4.2 "$file" --clobber
+            ls -la "$file"
           done
