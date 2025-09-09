@@ -1,4 +1,7 @@
 * export-ignore
 
-!*composer.json
-!/composer/**
+/composer.json export-ignore=false
+/composer/** export-ignore=false
+
+/LICNSE export-ignore=false
+/README_PHP.md export-ignore=false
