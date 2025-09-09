@@ -1,0 +1,27 @@
+{
+    "name": "faissaloux/pdf-suite",
+    "description": "PDF CLI tool for PDF manipulation",
+    "type": "composer-plugin",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "faissaloux",
+            "email": "contact@faissaloux.com"
+        }
+    ],
+    "require": {
+        "php": "^8.2",
+        "composer-plugin-api": "^2.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Faissaloux\\Composer\\": "composer/"
+        }
+    },
+    "bin": [
+        "bin/pdf_suite"
+    ],
+    "extra": {
+        "class": "Faissaloux\\Composer\\Installer"
+    }
+}
