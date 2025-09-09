@@ -51,12 +51,15 @@ jobs:
           path: ./binaries
 
       - name: List files
-        run: ls -b ./binaries
+        run: ls -la ./binaries
 
-      - name: Upload to GitHub Release
-        uses: softprops/action-gh-release@v2
-        with:
-          files: binaries/**/*
-          tag_name: v0.4.2
+      - name: Install GitHub CLI
+        run: sudo apt update && sudo apt install -y gh
+
+      - name: Upload binaries to GitHub Release
         env:
           GITHUB_TOKEN: ${{ secrets.UPLOAD_BINARIES }}
+        run: |
+          for file in ./binaries/*; do
+            gh release upload v0.4.2 "$file" --clobber
+          done
