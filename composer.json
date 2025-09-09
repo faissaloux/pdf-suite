@@ -2,7 +2,6 @@
     "name": "faissaloux/pdf-suite",
     "description": "PDF CLI tool for PDF manipulation",
     "type": "composer-plugin",
-    "readme": "README_PHP.md",
     "license": "MIT",
     "authors": [
         {
