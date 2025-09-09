@@ -39,7 +39,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: pdf_suite-binaries
-          path: pdf_suite-${{ env.os_name }}
+          path: pdf_suite-*
 
   release:
     runs-on: ubuntu-latest
