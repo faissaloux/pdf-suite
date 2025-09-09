@@ -10,6 +10,8 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
+    env:
+        os_name: ${{ matrix.os == 'ubuntu-latest' && 'linux' || matrix.os == 'windows-latest' && 'win' || 'mac' }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -31,7 +33,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: pdf_suite-${{ runner.os }}-binary
+          name: pdf_suite-${{ env.os_name }}
           path: dist/pdf_suite*
 
   release:
