@@ -1,4 +1,9 @@
-## [Unreleased](https://github.com/faissaloux/pdf-suite/compare/v0.3.1...main)
+## [Unreleased](https://github.com/faissaloux/pdf-suite/compare/v0.4.0...main)
+
+## [v0.4.0](https://github.com/faissaloux/pdf-suite/compare/v0.3.1...v0.4.0) - 2024-09-09
+### CHORE
+- Composer package by [@faissaloux](https://github.com/faissaloux) in https://github.com/faissaloux/pdf-suite/pull/7
+
 
 ## [v0.3.1](https://github.com/faissaloux/pdf-suite/compare/v0.3.0...v0.3.1) - 2024-09-05
 ### FIXED
