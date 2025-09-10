@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
@@ -34,7 +34,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: pdf_suite-${{ env.os_name }}
-          path: dist/pdf_suite-${{ env.os_name }}
+          path: dist/pdf_suite-${{ env.os_name }}*
 
   release:
     runs-on: ubuntu-latest
