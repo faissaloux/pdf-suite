@@ -42,7 +42,7 @@ class Installer implements PluginInterface
         $latestReleaseBinaries = $this->getLatestReleaseBinaries();
         $binary = $latestReleaseBinaries[$binaries[$os]];
 
-        $target = dirname(__DIR__, 3) . '/bin/pdf_suite' . ($os === 'Windows' ? '.exe' : '');
+        $target = dirname(__DIR__, 3) . '/bin/pdf_suite';
 
         file_put_contents($target, fopen($binary, 'r'));
 
