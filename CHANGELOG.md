@@ -1,4 +1,8 @@
-## [Unreleased](https://github.com/faissaloux/pdf-suite/compare/v0.4.3...main)
+## [Unreleased](https://github.com/faissaloux/pdf-suite/compare/v0.4.4...main)
+
+## [v0.4.4](https://github.com/faissaloux/pdf-suite/compare/v0.4.3...v0.4.4) - 2024-09-10
+### CHORE - COMPOSER
+- Fix different os binaries by [@faissaloux](https://github.com/faissaloux) in https://github.com/faissaloux/pdf-suite/pull/10
 
 ## [v0.4.3](https://github.com/faissaloux/pdf-suite/compare/v0.4.2...v0.4.3) - 2024-09-10
 ### CHORE - COMPOSER
