@@ -1,4 +1,8 @@
-## [Unreleased](https://github.com/faissaloux/pdf-suite/compare/v0.4.4...main)
+## [Unreleased](https://github.com/faissaloux/pdf-suite/compare/v0.4.5...main)
+
+## [v0.4.5](https://github.com/faissaloux/pdf-suite/compare/v0.4.4...v0.4.5) - 2024-09-10
+### CHORE - COMPOSER
+- Skip adding extension for bin on windows by [@faissaloux](https://github.com/faissaloux) in https://github.com/faissaloux/pdf-suite/pull/11
 
 ## [v0.4.4](https://github.com/faissaloux/pdf-suite/compare/v0.4.3...v0.4.4) - 2024-09-10
 ### CHORE - COMPOSER
