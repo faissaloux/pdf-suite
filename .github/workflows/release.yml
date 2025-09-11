@@ -1,7 +1,6 @@
 name: Build and Release
 
 on:
-  pull_request:
   release:
     types: [published]
 
@@ -73,5 +72,5 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.UPLOAD_BINARIES }}
         run: |
           for file in ./binaries/**/*; do
-            gh release upload v0.4.2 "$file" --clobber
+            gh release upload "$GITHUB_REF_NAME" "$file" --clobber
           done
