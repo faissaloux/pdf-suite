@@ -29,6 +29,7 @@ jobs:
           pip install pyinstaller
 
       - name: Install libpython${{ matrix.python }}
+        if: env.os_name == 'linux'
         run: |
           sudo apt-get update
           sudo apt-get install -y libpython${{ matrix.python }} libpython${{ matrix.python }}-dev
