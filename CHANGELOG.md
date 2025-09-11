@@ -1,4 +1,8 @@
-## [Unreleased](https://github.com/faissaloux/pdf-suite/compare/v0.4.5...main)
+## [Unreleased](https://github.com/faissaloux/pdf-suite/compare/v0.4.6...main)
+
+## [v0.4.6](https://github.com/faissaloux/pdf-suite/compare/v0.4.5...v0.4.6) - 2024-09-11
+### CHORE - COMPOSER
+- Support `composer-plugin-api` ^2.0 by [@faissaloux](https://github.com/faissaloux) in https://github.com/faissaloux/pdf-suite/pull/12
 
 ## [v0.4.5](https://github.com/faissaloux/pdf-suite/compare/v0.4.4...v0.4.5) - 2024-09-10
 ### CHORE - COMPOSER
