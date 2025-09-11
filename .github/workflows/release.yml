@@ -27,7 +27,10 @@ jobs:
       - name: Set up Python on Linux
         if: env.os_name == 'linux'
         run: |
-          sudo apt update
+          sudo apt-get update
+          sudo apt-get install -y software-properties-common
+          sudo add-apt-repository -y ppa:deadsnakes/ppa
+          sudo apt-get update
           sudo apt-get install -y python${{ matrix.python }} python${{ matrix.python }}-dev python3-pip build-essential
 
       - name: Install dependencies
