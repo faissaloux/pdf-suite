@@ -1,6 +1,7 @@
 name: Build and Release
 
 on:
+  pull_request:
   release:
     types: [published]
 
@@ -10,6 +11,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
+        python: [${{ matrix.python }}]
     env:
         os_name: ${{ matrix.os == 'ubuntu-latest' && 'linux' || matrix.os == 'windows-latest' && 'win' || 'mac' }}
     steps:
@@ -19,12 +21,17 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
+          python-version: ${{ matrix.python }}
 
       - name: Install dependencies
         run: |
           pip install .
           pip install pyinstaller
+
+      - name: Install libpython${{ matrix.python }}
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libpython${{ matrix.python }} libpython${{ matrix.python }}-dev
 
       - name: Build binary
         run: |
@@ -56,5 +63,5 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.UPLOAD_BINARIES }}
         run: |
           for file in ./binaries/**/*; do
-            gh release upload "$GITHUB_REF_NAME" "$file" --clobber
+            gh release upload v0.4.2 "$file" --clobber
           done
