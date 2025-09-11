@@ -18,21 +18,34 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: build
+        if: env.os_name == 'linux'
+        run: |
+          docker run --rm -v $PWD:/src ubuntu:22.04 /bin/bash -c "
+          apt-get update && apt-get install -y python${{ matrix.python }} python${{ matrix.python }}-dev python3-pip build-essential
+          cd /src
+          python${{ matrix.python }} -m pip install --upgrade pip setuptools wheel
+          python${{ matrix.python }} -m pip install .
+          python${{ matrix.python }} -m pip install pyinstaller
+          pyinstaller --onefile pdf_suite/cli.py -n pdf_suite-${{ env.os_name }}
+        "
+
       - name: Set up Python
+        if: env.os_name != 'linux'
         uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python }}
 
       - name: Install dependencies
+        if: env.os_name != 'linux'
         run: |
           pip install .
           pip install pyinstaller
 
       - name: Build binary
+        if: env.os_name != 'linux'
         run: |
           pyinstaller --onefile pdf_suite/cli.py -n pdf_suite-${{ env.os_name }}
-        env:
-          PYINSTALLER_NO_PYTHONLIB: ${{ env.os_name == 'linux' && '1' || ''}}
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
