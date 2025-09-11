@@ -11,7 +11,7 @@
     ],
     "require": {
         "php": "^8.2",
-        "composer-plugin-api": "^2.5"
+        "composer-plugin-api": "^2.0"
     },
     "autoload": {
         "psr-4": {
