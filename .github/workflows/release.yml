@@ -19,9 +19,16 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Set up Python
+        if: env.os_name != 'linux'
         uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python }}
+
+      - name: Set up Python on Linux
+        if: env.os_name == 'linux'
+        run: |
+          sudo apt update
+          sudo apt-get install -y python${{ matrix.python }} python${{ matrix.python }}-dev python3-pip build-essential
 
       - name: Install dependencies
         run: |
