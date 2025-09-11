@@ -32,7 +32,7 @@ jobs:
         run: |
           pyinstaller --onefile pdf_suite/cli.py -n pdf_suite-${{ env.os_name }}
         env:
-          PYINSTALLER_NO_PYTHONLIB: ${{ runner.os_name == 'linux' && '1' || ''}}
+          PYINSTALLER_NO_PYTHONLIB: ${{ env.os_name == 'linux' && '1' || ''}}
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
