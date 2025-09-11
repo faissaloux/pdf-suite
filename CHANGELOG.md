@@ -1,4 +1,8 @@
-## [Unreleased](https://github.com/faissaloux/pdf-suite/compare/v0.4.6...main)
+## [Unreleased](https://github.com/faissaloux/pdf-suite/compare/v0.4.7...main)
+
+## [v0.4.7](https://github.com/faissaloux/pdf-suite/compare/v0.4.6...v0.4.7) - 2024-09-12
+### CHORE - COMPOSER
+- Fix binary build by [@faissaloux](https://github.com/faissaloux) in https://github.com/faissaloux/pdf-suite/pull/13
 
 ## [v0.4.6](https://github.com/faissaloux/pdf-suite/compare/v0.4.5...v0.4.6) - 2024-09-11
 ### CHORE - COMPOSER
