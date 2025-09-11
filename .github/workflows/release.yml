@@ -28,8 +28,6 @@ jobs:
           pip install .
           pip install pyinstaller
 
-      - name: export
-
       - name: Build binary
         run: |
           pyinstaller --onefile pdf_suite/cli.py -n pdf_suite-${{ env.os_name }}
