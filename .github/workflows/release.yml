@@ -22,13 +22,13 @@ jobs:
         if: env.os_name == 'linux'
         run: |
           docker run --rm -v $PWD:/src ubuntu:22.04 /bin/bash -c "
-          apt-get update && apt-get install -y python${{ matrix.python }} python${{ matrix.python }}-dev python3-pip build-essential
-          cd /src
-          python${{ matrix.python }} -m pip install --upgrade pip setuptools wheel
-          python${{ matrix.python }} -m pip install .
-          python${{ matrix.python }} -m pip install pyinstaller
-          pyinstaller --onefile pdf_suite/cli.py -n pdf_suite-${{ env.os_name }}
-        "
+            apt-get update && apt-get install -y python${{ matrix.python }} python${{ matrix.python }}-dev python3-pip build-essential
+            cd /src
+            python${{ matrix.python }} -m pip install --upgrade pip setuptools wheel
+            python${{ matrix.python }} -m pip install .
+            python${{ matrix.python }} -m pip install pyinstaller
+            pyinstaller --onefile pdf_suite/cli.py -n pdf_suite-${{ env.os_name }}
+          "
 
       - name: Set up Python
         if: env.os_name != 'linux'
