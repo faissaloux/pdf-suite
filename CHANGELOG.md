@@ -1,4 +1,11 @@
-## [Unreleased](https://github.com/faissaloux/pdf-suite/compare/v0.4.8...main)
+## [Unreleased](https://github.com/faissaloux/pdf-suite/compare/v0.5.0...main)
+
+## [v0.5.0](https://github.com/faissaloux/pdf-suite/compare/v0.4.8...v0.5.0) - 2024-09-12
+### ADDED
+- Support merge into specific output file by [@faissaloux](https://github.com/faissaloux) in https://github.com/faissaloux/pdf-suite/pull/15
+
+### CHORE - COMPOSER
+- composer version by [@faissaloux](https://github.com/faissaloux) in https://github.com/faissaloux/pdf-suite/pull/16
 
 ## [v0.4.8](https://github.com/faissaloux/pdf-suite/compare/v0.4.7...v0.4.8) - 2024-09-12
 ### CHORE - COMPOSER
