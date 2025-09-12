@@ -15,13 +15,13 @@
     },
     "autoload": {
         "psr-4": {
-            "Faissaloux\\Composer\\": "composer/"
+            "Faissaloux\\PDFSuite\\": "composer/"
         }
     },
     "bin": [
         "bin/pdf_suite"
     ],
     "extra": {
-        "class": "Faissaloux\\Composer\\Installer"
+        "class": "Faissaloux\\PDFSuite\\Installer"
     }
 }
