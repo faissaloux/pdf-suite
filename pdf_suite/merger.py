@@ -4,12 +4,13 @@ import shutil
 import PyPDF2
 import img2pdf
 from pdf_suite.helper.file import File
+from pdf_suite.helper.output import Output
 from termspark import print
 
 class Merger:
     order: list[str] = []
 
-    def merge(self, input_directory: str, output_directory: str, order: str) -> bool:
+    def merge(self, input_directory: str, output: str, order: str) -> bool:
         if order:
             self.order = order.split(',')
 
@@ -30,10 +31,7 @@ class Merger:
                     pageObj = pdfReader.pages[pageNum]
                     pdfWriter.add_page(pageObj)
 
-        if not os.path.isdir(output_directory):
-            os.makedirs(output_directory)
-
-        with open(f"{output_directory}/output.pdf", 'wb') as pdfOutput:
+        with open(Output(output).path(), 'wb') as pdfOutput:
             pdfWriter.write(pdfOutput)
 
         print(' files merged successfully! ', 'black', 'screaming green')
