@@ -1,6 +1,6 @@
 <?php
 
-namespace Faissaloux\Composer;
+namespace Faissaloux\PDFSuite;
 
 use Composer\Composer;
 use Composer\IO\IOInterface;
@@ -56,7 +56,8 @@ class Installer implements PluginInterface
      */
     private function getLatestReleaseBinaries(): array
     {
-        $url = "https://api.github.com/repos/{$this->repository}/releases";
+        $tag = PDFSuite::VERSION;
+        $url = "https://api.github.com/repos/{$this->repository}/releases/tags/v$tag";
 
         $opts = [
             "http" => [
@@ -64,23 +65,17 @@ class Installer implements PluginInterface
             ]
         ];
         $context = stream_context_create($opts);
-        $json = file_get_contents($url, false, $context);
-        $releases = json_decode($json, true);
 
-        $latestRelease = null;
-        foreach ($releases as $release) {
-            if ($release) {
-                $latestRelease = $release;
-                break; // Releases are sorted newest → oldest.
-            }
-        }
+        $json = @file_get_contents($url, false, $context);
 
-        if (!$latestRelease) {
+        if (!$json) {
             die("No release found.\n");
         }
 
+        $release = json_decode($json, true);
+
         $assets = [];
-        foreach ($latestRelease["assets"] as $asset) {
+        foreach ($release['assets'] as $asset) {
             $assets[$asset['name']] = $asset['browser_download_url'];
         }
 
