@@ -18,9 +18,6 @@
             "Faissaloux\\PDFSuite\\": "composer/"
         }
     },
-    "bin": [
-        "bin/pdf_suite"
-    ],
     "extra": {
         "class": "Faissaloux\\PDFSuite\\Installer"
     }
