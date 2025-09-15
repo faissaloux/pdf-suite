@@ -1,4 +1,8 @@
-## [Unreleased](https://github.com/faissaloux/pdf-suite/compare/v0.5.1...main)
+## [Unreleased](https://github.com/faissaloux/pdf-suite/compare/v0.5.2...main)
+
+## [v0.5.2](https://github.com/faissaloux/pdf-suite/compare/v0.5.1...v0.5.2) - 2024-09-15
+### FIXED - COMPOSER
+- Fix bin file and vendor/bin not found by [@faissaloux](https://github.com/faissaloux) in https://github.com/faissaloux/pdf-suite/pull/18
 
 ## [v0.5.1](https://github.com/faissaloux/pdf-suite/compare/v0.5.0...v0.5.1) - 2024-09-15
 ### FIXED
