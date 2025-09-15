@@ -1,4 +1,8 @@
-## [Unreleased](https://github.com/faissaloux/pdf-suite/compare/v0.5.0...main)
+## [Unreleased](https://github.com/faissaloux/pdf-suite/compare/v0.5.1...main)
+
+## [v0.5.1](https://github.com/faissaloux/pdf-suite/compare/v0.5.0...v0.5.1) - 2024-09-15
+### FIXED
+- Fix path separator by [@faissaloux](https://github.com/faissaloux) in https://github.com/faissaloux/pdf-suite/pull/17
 
 ## [v0.5.0](https://github.com/faissaloux/pdf-suite/compare/v0.4.8...v0.5.0) - 2024-09-12
 ### ADDED
