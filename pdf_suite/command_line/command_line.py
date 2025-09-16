@@ -40,6 +40,9 @@ class CommandLine:
         if quality and max:
             raise TypeError("Only one of the two should be provided: quality or max")
 
+        if quality and quality <=0:
+            raise ValueError("quality should be greater than 0")
+
         Compress().run(
             input,
             output,
