@@ -30,7 +30,19 @@ class CommandLine:
     def compress(
         self=None,  # type: ignore
         input: str = typer.Option('input', '--input', '-i', help='PDF file that you want to compress.'),
-        output: str = typer.Option('output', '--output', '-o', help='Path where you will find the compressed PDF file.'),
+        output: str = typer.Option('output.pdf', '--output', '-o', help='Path where you will find the compressed PDF file.'),
+        quality: int = typer.Option(None, '--quality', '-q', help='Quality of the compressed file.'),
         max: str = typer.Option(None, '--max', '-m', help='Maximum size (MB) you tolerate for the compressed file.'),
     ) -> None:
-        Compress().run(input, output, float(max))
+        if not quality and not max:
+            raise TypeError("At least one of the two should be provided: quality or max")
+
+        if quality and max:
+            raise TypeError("Only one of the two should be provided: quality or max")
+
+        Compress().run(
+            input,
+            output,
+            int(quality) if quality else quality,
+            float(max) if max else max
+        )
