@@ -46,6 +46,6 @@ class CommandLine:
         Compress().run(
             input,
             output,
-            int(quality) if quality else quality,
-            float(max) if max else max
+            int(quality) if quality else None,
+            float(max) if max else None
         )

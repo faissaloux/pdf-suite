@@ -9,7 +9,7 @@ class Compress:
         inputSize, inputSizeForHuman = FileSize(input).to_megabytes()
         TermSpark().set_width(40).print_left("Input size").print_right(inputSizeForHuman, "bright red").spark()
 
-        quality: int = quality + 10 if quality else 100
+        quality = quality + 10 if quality else 100
         while True:
             quality = quality - 10
             self._to_quality(quality, input, output)
