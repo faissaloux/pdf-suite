@@ -1,4 +1,8 @@
-## [Unreleased](https://github.com/faissaloux/pdf-suite/compare/v0.5.3...main)
+## [Unreleased](https://github.com/faissaloux/pdf-suite/compare/v0.5.4...main)
+
+## [v0.5.4](https://github.com/faissaloux/pdf-suite/compare/v0.5.3...v0.5.4) - 2024-09-16
+### FIXED
+- Fix compress output directory not found by [@faissaloux](https://github.com/faissaloux) in https://github.com/faissaloux/pdf-suite/pull/20
 
 ## [v0.5.3](https://github.com/faissaloux/pdf-suite/compare/v0.5.2...v0.5.3) - 2024-09-16
 ### ADDED
