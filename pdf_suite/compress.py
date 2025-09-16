@@ -1,4 +1,6 @@
 from typing import Optional
+
+from pdf_suite.helper.output import Output
 from .helper.percentage import Percentage
 from .helper.filesize import FileSize
 from pypdf import PdfWriter
@@ -38,5 +40,5 @@ class Compress:
                 if img.image:
                     img.replace(img.image, quality=quality)
 
-        with open(output, "wb") as f:
+        with open(Output(output).path(), "wb") as f:
             writer.write(f)
