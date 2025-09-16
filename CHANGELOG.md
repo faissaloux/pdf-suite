@@ -1,4 +1,8 @@
-## [Unreleased](https://github.com/faissaloux/pdf-suite/compare/v0.5.2...main)
+## [Unreleased](https://github.com/faissaloux/pdf-suite/compare/v0.5.3...main)
+
+## [v0.5.3](https://github.com/faissaloux/pdf-suite/compare/v0.5.2...v0.5.3) - 2024-09-16
+### ADDED
+- Compress to specific quality by [@faissaloux](https://github.com/faissaloux) in https://github.com/faissaloux/pdf-suite/pull/19
 
 ## [v0.5.2](https://github.com/faissaloux/pdf-suite/compare/v0.5.1...v0.5.2) - 2024-09-15
 ### FIXED - COMPOSER
