@@ -1,4 +1,8 @@
-## [Unreleased](https://github.com/faissaloux/pdf-suite/compare/v0.5.4...main)
+## [Unreleased](https://github.com/faissaloux/pdf-suite/compare/v0.6.0...main)
+
+## [v0.6.0](https://github.com/faissaloux/pdf-suite/compare/v0.5.4...v0.6.0) - 2024-09-17
+### ADDED
+- `Pdf2img` specific page by [@faissaloux](https://github.com/faissaloux) in https://github.com/faissaloux/pdf-suite/pull/21
 
 ## [v0.5.4](https://github.com/faissaloux/pdf-suite/compare/v0.5.3...v0.5.4) - 2024-09-16
 ### FIXED
