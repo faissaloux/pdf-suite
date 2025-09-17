@@ -23,7 +23,7 @@ class CommandLine:
         self=None,  # type: ignore
         input: str = typer.Option(help='PDF file that you want to convert to image.'),
         output: str = typer.Option(help='Where you gonna find the extracted images.'),
-        page: int = typer.Option(None, help='The page number that you want.'),
+        page: int = typer.Option(None, '--page', '-p', help='The page number that you want.'),
     ) -> None:
         if page <= 0:
             raise ValueError("page should be greater than 0")
