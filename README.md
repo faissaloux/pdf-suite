@@ -34,6 +34,12 @@ Extract images from your PDF file.
 pdf_suite pdf2img --input input.pdf --output images_directory
 ```
 
+Zip extracted images from your PDF file using `--zip`.
+
+```bash
+pdf_suite pdf2img --input input.pdf --output images_directory --zip
+```
+
 You can also extract images from specific page.
 
 ```bash
