@@ -1,4 +1,5 @@
-from typing import Any, Optional, Self
+from typing import Any, Optional
+from typing_extensions import Self  # For Python <3.11.
 import fitz
 import os
 from termspark import print
