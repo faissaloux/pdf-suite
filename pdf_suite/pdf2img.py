@@ -1,6 +1,7 @@
 from typing import Any, Optional, Self
 import fitz
 import os
+from termspark import print
 
 from pdf_suite.helper.output import Output
 
@@ -31,6 +32,10 @@ class pdfToImage:
         return self
 
     def _extract_images_from_page(self, page_number: int) -> None:
+        if page_number > len(self._pdfFile):
+            print(f" Page {page_number} not found! Only {len(self._pdfFile)} disponible. ", 'white', 'guardsman red')
+            exit(1)
+
         pdf_page = self._pdfFile[page_number - 1]
         image_list = pdf_page.get_images(full=True)
 

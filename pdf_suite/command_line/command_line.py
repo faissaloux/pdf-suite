@@ -25,6 +25,9 @@ class CommandLine:
         output: str = typer.Option(help='Where you gonna find the extracted images.'),
         page: int = typer.Option(None, help='The page number that you want.'),
     ) -> None:
+        if page <= 0:
+            raise ValueError("page should be greater than 0")
+
         pdfToImage().page(page).run(input, output)
 
     @app.command()
