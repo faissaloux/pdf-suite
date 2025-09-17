@@ -3,14 +3,15 @@ import os
 
 class Output:
     def __init__(self, output: str):
-        self.output = output
+        self._output = output
 
     def path(self) -> str:
         output_file: str = 'output.pdf'
-        output_directory: str = self.output
+        output_directory: str = self._output
+        split: list[str] = output_directory.rsplit('/', 1)
 
-        if output_directory.endswith('.pdf'):
-            output_directory, output_file = output_directory.rsplit('/', 1)
+        if '.' in split[1]:
+            output_directory, output_file = split
 
         if not os.path.isdir(output_directory):
             os.makedirs(output_directory)
