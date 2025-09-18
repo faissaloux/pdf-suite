@@ -1,4 +1,5 @@
 from typing import Any, Optional
+import zipfile
 from typing_extensions import Self  # For Python <3.11.
 import fitz
 import os
@@ -11,7 +12,7 @@ class pdfToImage:
     _page: Optional[int]
     _output_folder: str
 
-    def run(self, pdf_path: str, output_folder: str):
+    def run(self, pdf_path: str, output_folder: str, zipped: bool):
         """
         Extracts all images from a PDF and saves them to a specified folder.
         """
@@ -26,6 +27,9 @@ class pdfToImage:
                 self._extract_images_from_page(page_index + 1)
 
         self._pdfFile.close()
+
+        if zipped:
+            self._zip_output()
 
     def page(self, page: int) -> Self:
         self._page = page
@@ -50,4 +54,14 @@ class pdfToImage:
             with open(Output(image_filename).path(), "wb") as f:
                 f.write(image_bytes)
 
-            print(f"Extracted: {image_filename}")
+    def _zip_output(self) -> None:
+        zip_file = os.path.join(self._output_folder, "output.zip")
+        with zipfile.ZipFile(Output(zip_file).path(), "w") as zipf:
+            for image in os.listdir(self._output_folder):
+                if not '.zip' in image:
+                    image_path = os.path.join(self._output_folder, image)
+                    zipf.write(image_path)
+
+        for file in os.listdir(self._output_folder):
+            if not '.zip' in file:
+                os.remove(os.path.join(self._output_folder, file))

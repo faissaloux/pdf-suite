@@ -1,3 +1,4 @@
+from typing import Annotated
 from ..compress import Compress
 from ..merger import Merger
 from ..pdf2img import pdfToImage
@@ -21,14 +22,15 @@ class CommandLine:
     @app.command()
     def pdf2img(
         self=None,  # type: ignore
-        input: str = typer.Option(help='PDF file that you want to convert to image.'),
-        output: str = typer.Option(help='Where you gonna find the extracted images.'),
+        input: str = typer.Option(..., '--input', '-i', help='PDF file that you want to convert to image.'),
+        output: str = typer.Option(..., '--output', '-o', help='Where you gonna find the extracted images.'),
         page: int = typer.Option(None, '--page', '-p', help='The page number that you want.'),
+        zipped: bool = typer.Option(False, '--zip', '-z', help='Zip generated images.'),
     ) -> None:
-        if page <= 0:
+        if page and page <= 0:
             raise ValueError("page should be greater than 0")
 
-        pdfToImage().page(page).run(input, output)
+        pdfToImage().page(page).run(input, output, zipped)
 
     @app.command()
     def compress(
