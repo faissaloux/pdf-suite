@@ -1,4 +1,8 @@
-## [Unreleased](https://github.com/faissaloux/pdf-suite/compare/v0.6.0...main)
+## [Unreleased](https://github.com/faissaloux/pdf-suite/compare/v0.7.0...main)
+
+## [v0.7.0](https://github.com/faissaloux/pdf-suite/compare/v0.6.0...v0.7.0) - 2024-09-18
+### ADDED
+- `Pdf2img` zipped by [@faissaloux](https://github.com/faissaloux) in https://github.com/faissaloux/pdf-suite/pull/22
 
 ## [v0.6.0](https://github.com/faissaloux/pdf-suite/compare/v0.5.4...v0.6.0) - 2024-09-17
 ### ADDED
