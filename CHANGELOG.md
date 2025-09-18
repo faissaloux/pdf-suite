@@ -1,4 +1,9 @@
-## [Unreleased](https://github.com/faissaloux/pdf-suite/compare/v0.7.1...main)
+## [Unreleased](https://github.com/faissaloux/pdf-suite/compare/v0.7.2...main)
+
+## [v0.7.2](https://github.com/faissaloux/pdf-suite/compare/v0.7.1...v0.7.2) - 2024-09-18
+### FIXED
+- Fix zip content by [@faissaloux](https://github.com/faissaloux) in https://github.com/faissaloux/pdf-suite/pull/25
+- better output path by [@faissaloux](https://github.com/faissaloux) in https://github.com/faissaloux/pdf-suite/pull/24
 
 ## [v0.7.1](https://github.com/faissaloux/pdf-suite/compare/v0.7.0...v0.7.1) - 2024-09-18
 ### FIXED
