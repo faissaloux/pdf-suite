@@ -8,7 +8,7 @@ class Output:
     def path(self) -> str:
         output_file: str = 'output.pdf'
         output_directory: str = self._output
-        split: list[str] = output_directory.rsplit('/', 1)
+        split: list[str] = output_directory.rsplit(os.sep, 1)
 
         if '.' in split[1]:
             output_directory, output_file = split
