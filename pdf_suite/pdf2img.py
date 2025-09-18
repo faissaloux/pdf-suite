@@ -60,7 +60,7 @@ class pdfToImage:
             for image in os.listdir(self._output_folder):
                 if not '.zip' in image:
                     image_path = os.path.join(self._output_folder, image)
-                    zipf.write(image_path)
+                    zipf.write(image_path, arcname=os.path.basename(image_path))
 
         for file in os.listdir(self._output_folder):
             if not '.zip' in file:
