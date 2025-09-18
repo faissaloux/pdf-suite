@@ -1,4 +1,8 @@
-## [Unreleased](https://github.com/faissaloux/pdf-suite/compare/v0.7.0...main)
+## [Unreleased](https://github.com/faissaloux/pdf-suite/compare/v0.7.1...main)
+
+## [v0.7.1](https://github.com/faissaloux/pdf-suite/compare/v0.7.0...v0.7.1) - 2024-09-18
+### FIXED
+- Adapt path split with different os by [@faissaloux](https://github.com/faissaloux) in https://github.com/faissaloux/pdf-suite/pull/23
 
 ## [v0.7.0](https://github.com/faissaloux/pdf-suite/compare/v0.6.0...v0.7.0) - 2024-09-18
 ### ADDED
