@@ -4,5 +4,5 @@ namespace Faissaloux\PDFSuite;
 
 class PDFSuite
 {
-    const VERSION = '0.8.0';
+    const VERSION = '0.8.1';
 }

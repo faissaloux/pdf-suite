@@ -1,4 +1,8 @@
-## [Unreleased](https://github.com/faissaloux/pdf-suite/compare/v0.8.0...main)
+## [Unreleased](https://github.com/faissaloux/pdf-suite/compare/v0.8.1...main)
+
+## [v0.8.1](https://github.com/faissaloux/pdf-suite/compare/v0.8.0...v0.8.1) - 2024-09-19
+### FIXED
+- Fix `docx2pdf` on linux by [@faissaloux](https://github.com/faissaloux) in https://github.com/faissaloux/pdf-suite/pull/27
 
 ## [v0.8.0](https://github.com/faissaloux/pdf-suite/compare/v0.7.2...v0.8.0) - 2024-09-19
 ### ADDED
