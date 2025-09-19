@@ -13,13 +13,16 @@ class docxToPdf:
 
         system: str = platform.system()
         if system == "Linux":
+            env = os.environ.copy()
+            env["HOME"] = "/tmp"
+
             subprocess.run([
                 "libreoffice",
                 "--headless",
                 "--convert-to", "pdf",
                 "--outdir", Output(output).dir(),
                 input
-            ])
+            ], check=True, env=env)
 
             outputfile = os.path.join(Output(output).dir(), input.rsplit(os.sep, 1)[1].rsplit('.', 1)[0] + '.pdf')
             os.rename(outputfile, Output(output).path())
