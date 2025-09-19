@@ -10,7 +10,7 @@ class Output:
         output_directory: str = self._output
         split: list[str] = output_directory.replace("/", os.sep).rsplit(os.sep, 1)
 
-        if '.' in split[1]:
+        if len(split) > 1 and '.' in split[1]:
             output_directory, output_file = split
 
         if not os.path.isdir(output_directory):

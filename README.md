@@ -7,6 +7,7 @@ pip install pdf-suite
 - Merges multiple PDF files / images into one PDF file.
 - PDF to Images.
 - Compress PDF.
+- Convert DOCX to PDF.
 
 ## Usage
 
@@ -67,3 +68,10 @@ pdf_suite compress --input input.pdf --output output.pdf --max 2
 
 #### Output
 A compressed PDF file `output.pdf` will be generated for you.
+
+### Convert DOCX to PDF
+Convert DOCX document to a PDF.
+
+```bash
+pdf_suite docx2pdf --input input.docx --output output.pdf
+```
