@@ -1,3 +1,6 @@
+import os
+import platform
+import subprocess
 from docx2pdf import convert
 from pdf_suite.helper.output import Output
 from termspark import print
@@ -7,5 +10,22 @@ class docxToPdf:
         """
         Converts DOCX document to a PDF.
         """
-        convert(input, Output(output).path())
+
+        system: str = platform.system()
+        if system == "Linux":
+            subprocess.run([
+                "libreoffice",
+                "--headless",
+                "--convert-to", "pdf",
+                "--outdir", Output(output).dir(),
+                input
+            ])
+
+            outputfile = os.path.join(Output(output).dir(), input.rsplit(os.sep, 1)[1].rsplit('.', 1)[0] + '.pdf')
+            os.rename(outputfile, Output(output).path())
+        elif system in ("Windows", "Darwin"):
+            convert(input, Output(output).path())
+        else:
+            raise RuntimeError(f"Unsupported system: {system}")
+
         print(' DOCX converted to PDF successfully! ', 'black', 'screaming green')
