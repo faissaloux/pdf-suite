@@ -1,4 +1,8 @@
-## [Unreleased](https://github.com/faissaloux/pdf-suite/compare/v0.7.2...main)
+## [Unreleased](https://github.com/faissaloux/pdf-suite/compare/v0.8.0...main)
+
+## [v0.8.0](https://github.com/faissaloux/pdf-suite/compare/v0.7.2...v0.8.0) - 2024-09-19
+### ADDED
+- Convert `docx` to `pdf` by [@faissaloux](https://github.com/faissaloux) in https://github.com/faissaloux/pdf-suite/pull/26
 
 ## [v0.7.2](https://github.com/faissaloux/pdf-suite/compare/v0.7.1...v0.7.2) - 2024-09-18
 ### FIXED
