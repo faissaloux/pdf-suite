@@ -1,4 +1,6 @@
 from typing import Annotated
+
+from pdf_suite.docx2pdf import docxToPdf
 from ..compress import Compress
 from ..merger import Merger
 from ..pdf2img import pdfToImage
@@ -31,6 +33,17 @@ class CommandLine:
             raise ValueError("page should be greater than 0")
 
         pdfToImage().page(page).run(input, output, zipped)
+
+    @app.command()
+    def docx2pdf(
+        self=None,  # type: ignore
+        input: str = typer.Option(..., '--input', '-i', help='DOCX file that you want to convert to PDF.'),
+        output: str = typer.Option('output', '--output', '-o', help='Where you gonna find the generated pdf.'),
+    ) -> None:
+        if not input.endswith(".docx"):
+            raise TypeError("input should be a docx document")
+
+        docxToPdf().run(input, output)
 
     @app.command()
     def compress(
