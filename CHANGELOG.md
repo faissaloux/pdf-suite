@@ -1,4 +1,8 @@
-## [Unreleased](https://github.com/faissaloux/pdf-suite/compare/v0.8.1...main)
+## [Unreleased](https://github.com/faissaloux/pdf-suite/compare/v0.8.2...main)
+
+## [v0.8.2](https://github.com/faissaloux/pdf-suite/compare/v0.8.1...v0.8.2) - 2024-09-22
+### FIXED
+- Optimize installer by [@faissaloux](https://github.com/faissaloux) in https://github.com/faissaloux/pdf-suite/pull/28
 
 ## [v0.8.1](https://github.com/faissaloux/pdf-suite/compare/v0.8.0...v0.8.1) - 2024-09-19
 ### FIXED
