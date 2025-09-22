@@ -5,14 +5,15 @@ namespace Faissaloux\PDFSuite;
 use Composer\Composer;
 use Composer\IO\IOInterface;
 use Composer\Plugin\PluginInterface;
+use Composer\EventDispatcher\EventSubscriberInterface;
 
-class Installer implements PluginInterface
+class Installer implements PluginInterface, EventSubscriberInterface
 {
     private string $repository = "faissaloux/pdf-suite";
 
     public function activate(Composer $composer, IOInterface $io)
     {
-        $this->install();
+        //
     }
 
     public function deactivate(Composer $composer, IOInterface $io)
@@ -25,7 +26,15 @@ class Installer implements PluginInterface
         //
     }
 
-    private function install()
+    public static function getSubscribedEvents()
+    {
+        return [
+            'post-package-install' => 'install',
+            'post-package-update' => 'install',
+        ];
+    }
+
+    public function install()
     {
         $os = PHP_OS_FAMILY;
 
