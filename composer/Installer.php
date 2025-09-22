@@ -5,14 +5,19 @@ namespace Faissaloux\PDFSuite;
 use Composer\Composer;
 use Composer\IO\IOInterface;
 use Composer\Plugin\PluginInterface;
+use Composer\Installer\PackageEvents;
+use Composer\Installer\PackageEvent;
+use Composer\EventDispatcher\EventSubscriberInterface;
+use Composer\DependencyResolver\Operation\InstallOperation;
+use Composer\DependencyResolver\Operation\UpdateOperation;
 
-class Installer implements PluginInterface
+class Installer implements PluginInterface, EventSubscriberInterface
 {
     private string $repository = "faissaloux/pdf-suite";
 
     public function activate(Composer $composer, IOInterface $io)
     {
-        $this->install();
+        //
     }
 
     public function deactivate(Composer $composer, IOInterface $io)
@@ -25,34 +30,60 @@ class Installer implements PluginInterface
         //
     }
 
-    private function install()
+    public static function getSubscribedEvents()
     {
-        $os = PHP_OS_FAMILY;
-
-        $binaries = [
-            'Windows' => 'pdf_suite-win.exe',
-            'Linux' => 'pdf_suite-linux',
-            'Darwin' => 'pdf_suite-mac',
+        return [
+            PackageEvents::POST_PACKAGE_INSTALL => 'install',
+            PackageEvents::POST_PACKAGE_UPDATE => 'install',
         ];
+    }
 
-        if (!isset($binaries[$os])) {
-            throw new \Exception("Unsupported OS: $os");
+    public function install(PackageEvent $event)
+    {
+        $operation = $event->getOperation();
+
+        if (method_exists($operation, 'getPackage')) {
+            $package = $operation->getPackage();
+        } elseif (method_exists($operation, 'getTargetPackage')) {
+            $package = $operation->getTargetPackage();
+        } else {
+            return;
         }
 
-        $latestReleaseBinaries = $this->getLatestReleaseBinaries();
-        $binary = $latestReleaseBinaries[$binaries[$os]];
+        $package = match (true) {
+            $operation instanceof InstallOperation => $operation->getPackage(),
+            $operation instanceof UpdateOperation => $operation->getTargetPackage(),
+            default => '',
+        };
 
-        $targetDirectory = dirname(__DIR__, 3) . '/bin';
-        if( !is_dir($targetDirectory)) {
-            mkdir($targetDirectory);
-        }
+        if ($package->getName() === $this->repository) {
+            $os = PHP_OS_FAMILY;
 
-        $target = $targetDirectory . '/pdf_suite' . ($os === 'Windows' ? '.exe' : '');
+            $binaries = [
+                'Windows' => 'pdf_suite-win.exe',
+                'Linux' => 'pdf_suite-linux',
+                'Darwin' => 'pdf_suite-mac',
+            ];
 
-        file_put_contents($target, fopen($binary, 'r'));
+            if (!isset($binaries[$os])) {
+                throw new \Exception("Unsupported OS: $os");
+            }
 
-        if ($os !== 'Windows') {
-            chmod($target, 0755);
+            $latestReleaseBinaries = $this->getLatestReleaseBinaries();
+            $binary = $latestReleaseBinaries[$binaries[$os]];
+
+            $targetDirectory = dirname(__DIR__, 3) . '/bin';
+            if( !is_dir($targetDirectory)) {
+                mkdir($targetDirectory);
+            }
+
+            $target = $targetDirectory . '/pdf_suite' . ($os === 'Windows' ? '.exe' : '');
+
+            file_put_contents($target, fopen($binary, 'r'));
+
+            if ($os !== 'Windows') {
+                chmod($target, 0755);
+            }
         }
     }
 
