@@ -14,5 +14,8 @@ class File:
     def is_image(self) -> bool:
         return self.extension in ('jpg', 'jpeg', 'png')
 
+    def is_pdf(self) -> bool:
+        return self.extension == 'pdf'
+
     def exists(self) -> bool:
         return os.path.exists(self.path)

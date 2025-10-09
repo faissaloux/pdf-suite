@@ -8,6 +8,7 @@ pip install pdf-suite
 - PDF to Images.
 - Compress PDF.
 - Convert DOCX to PDF.
+- PDF pages count.
 
 ## Usage
 
@@ -74,4 +75,11 @@ Convert DOCX document to a PDF.
 
 ```bash
 pdf_suite docx2pdf --input input.docx --output output.pdf
+```
+
+### PDF pages count
+Get PDF document pages count.
+
+```bash
+pdf_suite pagescount --input input.pdf
 ```
