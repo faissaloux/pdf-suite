@@ -49,7 +49,7 @@ class CommandLine:
     def pagescount(
         self=None,  # type: ignore
         input: str = typer.Option(..., '--input', '-i', help='DOCX file that you want to convert to PDF.'),
-    ) -> None:
+    ) -> int:
         if not File(input).is_pdf():
             raise TypeError("input should be a pdf document")
 
