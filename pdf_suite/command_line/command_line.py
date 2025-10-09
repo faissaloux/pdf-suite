@@ -1,6 +1,6 @@
-from typing import Annotated
-
 from pdf_suite.docx2pdf import docxToPdf
+from pdf_suite.helper.file import File
+from pdf_suite.pdfinfo import pdfInfo
 from ..compress import Compress
 from ..merger import Merger
 from ..pdf2img import pdfToImage
@@ -44,6 +44,18 @@ class CommandLine:
             raise TypeError("input should be a docx document")
 
         docxToPdf().run(input, output)
+
+    @app.command()
+    def pagescount(
+        self=None,  # type: ignore
+        input: str = typer.Option(..., '--input', '-i', help='DOCX file that you want to convert to PDF.'),
+    ) -> None:
+        if not File(input).is_pdf():
+            raise TypeError("input should be a pdf document")
+
+        pages_count = pdfInfo(input).pages_count()
+
+        return pages_count
 
     @app.command()
     def compress(
