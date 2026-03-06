@@ -12,7 +12,7 @@ class pdfToImage:
     _page: Optional[int]
     _output_folder: str
 
-    def run(self, pdf_path: str, output_folder: str, zipped: bool):
+    def run(self, pdf_path: str, output_folder: str, zipped: bool, only_images: bool = True):
         """
         Extracts all images from a PDF and saves them to a specified folder.
         """
@@ -20,11 +20,18 @@ class pdfToImage:
 
         self._pdfFile = fitz.open(pdf_path)
 
-        if self._page:
-            self._extract_images_from_page(self._page)
+        if only_images:
+            if self._page:
+                self._extract_images_from_page(self._page)
+            else:
+                for page_index in range(len(self._pdfFile)):
+                    self._extract_images_from_page(page_index + 1)
         else:
-            for page_index in range(len(self._pdfFile)):
-                self._extract_images_from_page(page_index + 1)
+            if self._page:
+                self._page_to_image(self._page)
+            else:
+                for page_index in range(len(self._pdfFile)):
+                    self._page_to_image(page_index + 1)
 
         self._pdfFile.close()
 
@@ -53,6 +60,15 @@ class pdfToImage:
             image_filename = os.path.join(self._output_folder, f"page{page_number}_img{img_index + 1}.{image_ext}")
             with open(Output(image_filename).path(), "wb") as f:
                 f.write(image_bytes)
+
+    def _page_to_image(self, page_number: int) -> None:
+        page = self._pdfFile.load_page(page_number - 1)
+        zoom = 1
+
+        matrix = fitz.Matrix(zoom, zoom)
+        pix = page.get_pixmap(matrix=matrix, alpha=False)
+        image_filename = os.path.join(self._output_folder, f"page{page_number}.jpeg")
+        pix.save(Output(image_filename).path())
 
     def _zip_output(self) -> None:
         zip_file = os.path.join(self._output_folder, "output.zip")
