@@ -29,11 +29,12 @@ class CommandLine:
         output: str = typer.Option(..., '--output', '-o', help='Where you gonna find the extracted images.'),
         page: int = typer.Option(None, '--page', '-p', help='The page number that you want.'),
         zipped: bool = typer.Option(False, '--zip', '-z', help='Zip generated images.'),
+        full_page: bool = typer.Option(False, '--full-page', '-f', help='Turn full pages to images.'),
     ) -> None:
         if page and page <= 0:
             raise ValueError("page should be greater than 0")
 
-        pdfToImage().page(page).run(input, output, zipped)
+        pdfToImage().page(page).run(input, output, zipped, full_page)
 
     @app.command()
     def thumbnail(
