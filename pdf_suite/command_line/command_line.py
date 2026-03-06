@@ -4,6 +4,7 @@ from pdf_suite.pdfinfo import pdfInfo
 from ..compress import Compress
 from ..merger import Merger
 from ..pdf2img import pdfToImage
+from ..thumbnail import Thumbnail
 import typer
 
 class CommandLine:
@@ -33,6 +34,14 @@ class CommandLine:
             raise ValueError("page should be greater than 0")
 
         pdfToImage().page(page).run(input, output, zipped)
+
+    @app.command()
+    def thumbnail(
+        self=None,  # type: ignore
+        input: str = typer.Option(..., '--input', '-i', help='PDF file that you want to extract thumbnail from.'),
+        output: str = typer.Option('output', '--output', '-o', help='Where you gonna find the generated thumbnail.'),
+    ) -> None:
+        Thumbnail().extract(input, output)
 
     @app.command()
     def docx2pdf(
