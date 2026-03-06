@@ -1,4 +1,11 @@
-## [Unreleased](https://github.com/faissaloux/pdf-suite/compare/v0.9.0...main)
+## [Unreleased](https://github.com/faissaloux/pdf-suite/compare/v0.10.0...main)
+
+## [v0.10.0](https://github.com/faissaloux/pdf-suite/compare/v0.9.0...v0.10.0) - 2026-03-06
+### ADDED
+- Extract PDF Thumbnail by [@faissaloux](https://github.com/faissaloux) in https://github.com/faissaloux/pdf-suite/pull/31
+- Convert full pdf page to image by [@faissaloux](https://github.com/faissaloux) in https://github.com/faissaloux/pdf-suite/pull/33
+### DEPENDENCIES
+- bump `typing-extensions` to 4.15.0 by [@faissaloux](https://github.com/faissaloux) in https://github.com/faissaloux/pdf-suite/pull/32
 
 ## [v0.9.0](https://github.com/faissaloux/pdf-suite/compare/v0.8.2...v0.9.0) - 2025-10-09
 ### ADDED
