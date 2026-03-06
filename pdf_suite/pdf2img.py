@@ -9,10 +9,10 @@ from pdf_suite.helper.output import Output
 
 class pdfToImage:
     _pdfFile: Any
-    _page: Optional[int]
+    _page: Optional[int] = None
     _output_folder: str
 
-    def run(self, pdf_path: str, output_folder: str, zipped: bool, only_images: bool = True):
+    def run(self, pdf_path: str, output_folder: str, zipped: bool = False, full_page: bool = False):
         """
         Extracts all images from a PDF and saves them to a specified folder.
         """
@@ -20,18 +20,18 @@ class pdfToImage:
 
         self._pdfFile = fitz.open(pdf_path)
 
-        if only_images:
-            if self._page:
-                self._extract_images_from_page(self._page)
-            else:
-                for page_index in range(len(self._pdfFile)):
-                    self._extract_images_from_page(page_index + 1)
-        else:
+        if full_page:
             if self._page:
                 self._page_to_image(self._page)
             else:
                 for page_index in range(len(self._pdfFile)):
                     self._page_to_image(page_index + 1)
+        else:
+            if self._page:
+                self._extract_images_from_page(self._page)
+            else:
+                for page_index in range(len(self._pdfFile)):
+                    self._extract_images_from_page(page_index + 1)
 
         self._pdfFile.close()
 
