@@ -9,6 +9,7 @@ pip install pdf-suite
 - Compress PDF.
 - Convert DOCX to PDF.
 - PDF pages count.
+- PDF thumbnail.
 
 ## Usage
 
@@ -82,4 +83,11 @@ Get PDF document pages count.
 
 ```bash
 pdf_suite pagescount --input input.pdf
+```
+
+### PDF thumbnail
+Extract pdf document thumbnail.
+
+```bash
+pdf_suite thumbnail --input input.pdf --output output.jpeg
 ```
