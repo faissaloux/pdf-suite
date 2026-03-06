@@ -39,7 +39,7 @@ class CommandLine:
     def thumbnail(
         self=None,  # type: ignore
         input: str = typer.Option(..., '--input', '-i', help='PDF file that you want to extract thumbnail from.'),
-        output: str = typer.Option('output', '--output', '-o', help='Where you gonna find the generated thumbnail.'),
+        output: str = typer.Option('output.jpeg', '--output', '-o', help='Where you gonna find the generated thumbnail.'),
     ) -> None:
         Thumbnail().extract(input, output)
 
