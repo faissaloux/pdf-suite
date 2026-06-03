@@ -16,13 +16,13 @@ class Compress:
             quality = quality - 10
             self._to_quality(quality, input, output)
 
-            if not max or quality <= 0 or FileSize(output).to_megabytes()[0] < max:
+            if not max or quality <= 0 or FileSize(Output(output).path()).to_megabytes()[0] < max:
                 break
 
-            input = output
+            input = Output(output).path()
             print("Loading...", end='\r')
 
-        outputSize, outputSizeForHuman = FileSize(output).to_megabytes()
+        outputSize, outputSizeForHuman = FileSize(Output(output).path()).to_megabytes()
         percentage = Percentage().part(inputSize - outputSize).whole(inputSize).humanize()
 
         TermSpark().set_width(40).print_left("Output size").spark_right([f"quality {quality} ", "gray"], [outputSizeForHuman, "pixie green"]).spark()
@@ -36,9 +36,13 @@ class Compress:
         writer = PdfWriter(clone_from=input)
 
         for page in writer.pages:
-            for img in page.images:
-                if img.image:
-                    img.replace(img.image, quality=quality)
+            if len(page.images):
+                for img in page.images:
+                    if img.image:
+                        img.replace(img.image, quality=quality)
+            else:
+                level = 9 - (quality // 10)
+                page.compress_content_streams(level=level)
 
         with open(Output(output).path(), "wb") as f:
             writer.write(f)
