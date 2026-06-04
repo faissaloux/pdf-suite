@@ -29,6 +29,10 @@ class Merger:
                 pdfReader = PyPDF2.PdfReader(pdfFileObj)
                 for pageNum in range(0, len(pdfReader.pages)):
                     pageObj = pdfReader.pages[pageNum]
+
+                    if pageObj.mediabox.width > PyPDF2.PaperSize.A4.width:
+                        pageObj.scale_to(PyPDF2.PaperSize.A4.width, PyPDF2.PaperSize.A4.height)
+
                     pdfWriter.add_page(pageObj)
 
         with open(Output(output).path(), 'wb') as pdfOutput:
