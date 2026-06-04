@@ -1,4 +1,8 @@
-## [Unreleased](https://github.com/faissaloux/pdf-suite/compare/v0.10.1...main)
+## [Unreleased](https://github.com/faissaloux/pdf-suite/compare/v0.10.2...main)
+
+## [v0.10.2](https://github.com/faissaloux/pdf-suite/compare/v0.10.1...v0.10.2) - 2026-06-04
+### FIXED
+- Fix `merger` produce pdf with dimensions larger than A4 by [@faissaloux](https://github.com/faissaloux) in https://github.com/faissaloux/pdf-suite/pull/35
 
 ## [v0.10.1](https://github.com/faissaloux/pdf-suite/compare/v0.10.0...v0.10.1) - 2026-06-03
 ### FIXED
